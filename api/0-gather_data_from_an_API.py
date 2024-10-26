@@ -9,9 +9,13 @@ from sys import argv
 
 if __name__ == "__main__":
     userId = argv[1]
-    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(userId)
-    todo_url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(userId)
-    
+    user_url = (
+        "https://jsonplaceholder.typicode.com/users/{}".format(userId)
+    )
+    todo_url = (
+        "https://jsonplaceholder.typicode.com/todos?userId={}".format(userId)
+    )
+
     # Fetch user information and tasks
     user_info = requests.get(user_url).json()
     todos_info = requests.get(todo_url).json()
@@ -23,9 +27,11 @@ if __name__ == "__main__":
     total_number_of_tasks = len(todos_info)
 
     # Print results
-    print("Employee {} is done with tasks({}/{}):".format(
-        employee_name, number_of_done_tasks, total_number_of_tasks
-    ))
-    
+    print(
+        "Employee {} is done with tasks({}/{}):".format(
+            employee_name, number_of_done_tasks, total_number_of_tasks
+        )
+    )
+
     for task in completed_tasks:
-        print("\t " + task["title"])
+        print("\t {}".format(task["title"]))
